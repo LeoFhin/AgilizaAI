@@ -3,18 +3,18 @@ import { ListGroup, Image, Badge, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const ClientListItem = ({ client }) => {
-  const itemStyle = {
-    backgroundColor: client.hasNewMessage ? '#eef7ff' : '#fff', // Destaca se tem nova mensagem
-    cursor: 'pointer', // Indica que é clicável
-  };
+  const itemClasses = [
+    "p-3",
+    "border-bottom",
+    client.hasNewMessage ? "has-new-message" : "" 
+  ].join(" ");
 
   return (
     <ListGroup.Item
-      as={Link} // Faz o item ser um link
-      to={`/clientes/conversa/${client.id}`} // Rota de exemplo para conversa/detalhe
-      className="p-3 border-bottom"
-      style={itemStyle}
-      action // Adiciona efeito de hover
+      as={Link} 
+      to={`/clientes/conversa/${client.id}`} 
+      className={itemClasses}
+      action 
     >
       <Row className="align-items-center">
         <Col xs="auto" className="pe-0">
@@ -30,8 +30,8 @@ const ClientListItem = ({ client }) => {
               <Badge
                 pill
                 bg="success"
-                className="position-absolute bottom-0 start-0 ms-2 mb-1 border border-light"
-                style={{ transform: 'translate(35px, 5px)', padding: '0.35em' }} // Ajuste fino da posição
+                className="position-absolute bottom-0 start-0 ms-2 mb-1 status-badge-border"
+                style={{ transform: 'translate(35px, 5px)', padding: '0.35em' }}
               >
                 <span className="visually-hidden">Online</span>
               </Badge>
@@ -43,11 +43,11 @@ const ClientListItem = ({ client }) => {
             <h6 className={`mb-1 ${client.hasNewMessage ? 'fw-bold' : ''}`}>{client.name}</h6>
             <small className="text-muted">{client.lastMessageTimestamp}</small>
           </div>
-          <p className={`mb-1 small text-muted ${client.hasNewMessage ? 'text-primary' : ''}`} style={{
+          <p className={`mb-1 small ${client.hasNewMessage ? 'text-primary' : 'text-muted'}`} style={{
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
-            maxWidth: '90%' // Evita que o texto quebre o layout
+            maxWidth: '90%' 
           }}>
             {client.lastMessagePreview}
           </p>

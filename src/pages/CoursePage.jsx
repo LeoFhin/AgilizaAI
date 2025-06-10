@@ -1,13 +1,13 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import CourseCard from '../components/CourseCard'; // Ajuste o caminho se necessário
+import CourseCard from '../components/CourseCard'; 
 
 const coursesData = [
   {
     id: 1,
     title: "Comunicação Eficaz com Clientes",
     description: "Aprenda técnicas de PNL e escuta ativa para entender melhor seus clientes e fechar mais negócios.",
-    imageUrl: "https://media.istockphoto.com/id/1434105995/pt/foto/two-businesswomen-having-a-discussion-while-looking-at-a-laptop-screen.jpg?s=612x612&w=0&k=20&c=tx3kLNpaEr5aqO1QIo5uOvQ7YIxJqcmeXgVBxyJw2so=" // Substitua por URLs reais ou caminhos locais
+    imageUrl: "https://media.istockphoto.com/id/1434105995/pt/foto/two-businesswomen-having-a-discussion-while-looking-at-a-laptop-screen.jpg?s=612x612&w=0&k=20&c=tx3kLNpaEr5aqO1QIo5uOvQ7YIxJqcmeXgVBxyJw2so=" 
   },
   {
     id: 2,

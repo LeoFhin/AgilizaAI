@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, ListGroup, Form, InputGroup, Button } from 'react-bootstrap';
-import ClientListItem from '../components/ClientListItem'; // Ajuste o caminho se necessário
-import { clientsData } from '../data/clientsData'; // Ajuste o caminho se necessário
+import ClientListItem from '../components/ClientListItem'; 
+import { clientsData } from '../data/clientsData'; 
 
 const ClientsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filter, setFilter] = useState('all'); // 'all', 'new_messages', 'online'
+  const [filter, setFilter] = useState('all'); 
 
   const filteredClients = clientsData
     .filter(client => {
@@ -28,7 +28,6 @@ const ClientsPage = () => {
         </Col>
       </Row>
 
-      {/* Barra de Pesquisa e Filtros */}
       <Row className="mb-4">
         <Col md={8}>
           <InputGroup>
@@ -49,8 +48,6 @@ const ClientsPage = () => {
           </Form.Select>
         </Col>
       </Row>
-
-      {/* Lista de Clientes */}
       <Row>
         <Col>
           {filteredClients.length > 0 ? (

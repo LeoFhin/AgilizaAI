@@ -1,10 +1,8 @@
-// ProviderProfile.jsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Row, Col, Image, Card, Button, Nav } from 'react-bootstrap';
-import Post from '../components/Post'; // Certifique-se que o caminho para Post está correto
-import { useParams } from 'react-router-dom'; // Adicionado para consistência, embora o mock atual não use o 'id' para diferenciar muito
+import Post from '../components/Post';
+import { useParams } from 'react-router-dom';
 
-// Componente/Função para renderizar estrelas de avaliação
 const StarRating = ({ rating }) => {
   const totalStars = 5;
   let stars = [];
@@ -12,14 +10,14 @@ const StarRating = ({ rating }) => {
     if (i <= rating) {
       stars.push(<i key={i} className="bi bi-star-fill text-warning me-1"></i>);
     } else {
-      stars.push(<i key={i} className="bi bi-star text-warning me-1"></i>); // Estrela vazia
+      stars.push(<i key={i} className="bi bi-star text-warning me-1"></i>)
     }
   }
   return <>{stars}</>;
 };
 
 const ProviderProfile = () => {
-  const { id } = useParams(); // Pega o ID da URL, se existir
+  const { id } = useParams();
   const [provider, setProvider] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('posts');
@@ -78,13 +76,13 @@ const ProviderProfile = () => {
       ];
 
       const mockProvider = {
-        id: id || 1, // Usa o ID da URL se existir, senão um ID padrão
-        name: "Maria Silva", // Mantendo estático por enquanto para "Meu Perfil"
+        id: id || 1, 
+        name: "Maria Silva", 
         profilePhoto: "https://randomuser.me/api/portraits/women/12.jpg",
         coverPhoto: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
         bio: "Profissional com mais de 10 anos de experiência. Especializada em design de interiores com foco em sustentabilidade e conforto. Atendimento personalizado para cada cliente.",
-        rating: 4.8, // Pode ser calculado dinamicamente a partir das avaliações no futuro
-        reviewsCount: mockReviews.length, // Atualizado dinamicamente
+        rating: 4.8, 
+        reviewsCount: mockReviews.length, 
         location: "São Paulo, SP",
         specialties: ["Design de Interiores", "Decoração", "Consultoria"],
         contact: {
@@ -111,8 +109,8 @@ const ProviderProfile = () => {
             comments: [ /* ... */ ]
           }
         ],
-        services: mockServices, // Adicionado
-        reviews: mockReviews    // Adicionado
+        services: mockServices, 
+        reviews: mockReviews 
       };
 
       setTimeout(() => {
@@ -122,7 +120,7 @@ const ProviderProfile = () => {
     };
 
     fetchProviderData();
-  }, [id]); // Adicionado 'id' como dependência
+  }, [id]);
 
   if (loading) {
     return (
@@ -145,7 +143,6 @@ const ProviderProfile = () => {
 
   return (
     <Container className="py-4">
-      {/* Foto de capa */}
       <div
         className="rounded-3 mb-4 position-relative"
         style={{
@@ -157,7 +154,6 @@ const ProviderProfile = () => {
       />
 
       <Row>
-        {/* Coluna de informações do perfil */}
         <Col lg={4}>
           <Card className="border-0 shadow-sm mb-4">
             <Card.Body className="text-center">
@@ -211,7 +207,6 @@ const ProviderProfile = () => {
           </Card>
         </Col>
 
-        {/* Coluna de conteúdo (posts, serviços, avaliações) */}
         <Col lg={8}>
           <Card className="border-0 shadow-sm mb-4">
             <Card.Header className="bg-white border-bottom-0 pb-0">
@@ -294,13 +289,13 @@ const ProviderProfile = () => {
                       <Card key={review.id} className="mb-3 shadow-sm">
                         <Card.Body>
                           <Row>
-                            <Col xs="auto" className="pe-0"> {/* pe-0 para reduzir espaço se a foto for pequena */}
+                            <Col xs="auto" className="pe-0"> 
                               <Image
                                 src={review.authorPhoto || "https://via.placeholder.com/50?text=User"}
                                 roundedCircle
                                 width={50}
                                 height={50}
-                                className="me-2" // Mantém uma pequena margem à direita
+                                className="me-2" 
                               />
                             </Col>
                             <Col>

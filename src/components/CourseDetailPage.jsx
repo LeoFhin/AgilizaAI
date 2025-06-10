@@ -1,8 +1,6 @@
-// src/pages/CourseDetailPage.js
-import React from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { coursesData } from '../data/coursesData'; // Certifique-se que o caminho está correto
+import { coursesData } from '../data/coursesData'; 
 
 const CourseDetailPage = () => {
   const { courseId } = useParams();
@@ -20,20 +18,19 @@ const CourseDetailPage = () => {
     );
   }
 
-  // Usando os campos do seu coursesData.js
   const {
     title,
     longDescription,
-    imageUrl, // Usaremos esta como a imagem principal do topo
+    imageUrl, 
     instructor,
     duration,
-    modules = [], // Default para array vazio se não existir
-    whatYouWillLearn = [], // Default para array vazio
+    modules = [], 
+    whatYouWillLearn = [], 
     price
   } = course;
 
   return (
-    <Container className="py-5 course-detail-page"> {/* Adicionada classe para estilização opcional */}
+    <Container className="py-5 course-detail-page"> 
       <Row className="mb-3">
         <Col>
           <Button variant="outline-secondary" onClick={() => navigate(-1)}>
@@ -42,20 +39,18 @@ const CourseDetailPage = () => {
         </Col>
       </Row>
 
-      {/* Seção da Imagem no Topo */}
       <Row className="mb-4">
         <Col xs={12}>
           <Image
             src={imageUrl || 'https://via.placeholder.com/1200x400?text=Imagem+do+Curso'}
             alt={title}
-            fluid // Para ser responsiva e ocupar a largura da coluna
-            className="course-detail-image-top" // Classe para estilização opcional
-            style={{ width: '100%', maxHeight: '400px', objectFit: 'cover' }} // Estilo inline para exemplo
+            fluid 
+            className="course-detail-image-top" 
+            style={{ width: '100%', maxHeight: '400px', objectFit: 'cover' }} 
           />
         </Col>
       </Row>
 
-      {/* Seção de Conteúdo Abaixo da Imagem */}
       <Row>
         <Col md={8}>
           <h1 className="mb-3">{title}</h1>
@@ -90,8 +85,8 @@ const CourseDetailPage = () => {
           )}
         </Col>
 
-        <Col md={4}> {/* Coluna lateral para CTA (Call to Action) / Preço */}
-          <div className="sticky-top" style={{ top: '20px' }}> {/* Para o card lateral "flutuar" ao rolar */}
+        <Col md={4}> 
+          <div className="sticky-top" style={{ top: '20px' }}> 
             <div className="card p-3 shadow-sm">
               <h4 className="text-center">Invista em Você!</h4>
               {price && <h3 className="text-center my-3">{price}</h3>}

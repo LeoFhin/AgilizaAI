@@ -1,9 +1,8 @@
-// src/components/MessageBubble.jsx
 import React from 'react';
 import { Card } from 'react-bootstrap';
 
 const MessageBubble = ({ message, isMe }) => {
-  const alignClass = isMe ? 'ms-auto' : 'me-auto'; // Alinha à direita se for 'me', à esquerda se for 'client'
+  const alignClass = isMe ? 'ms-auto' : 'me-auto'; 
   const bgBubble = isMe ? 'primary' : 'light';
   const textBubble = isMe ? 'white' : 'dark';
   const textAlign = isMe ? 'end' : 'start';

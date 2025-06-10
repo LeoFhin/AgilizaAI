@@ -1,0 +1,118 @@
+/* ================================== */
+/* ESTILOS MODO ESCURO         */
+/* ================================== */
+
+body.dark-mode {
+  /* Cores de fundo */
+  --bs-body-bg: #212529;
+  --bs-secondary-bg: #2b3035;
+  --bs-tertiary-bg: #343a40;
+
+  /* Cores de texto */
+  --bs-body-color: #dee2e6;
+  --bs-secondary-color: #adb5bd;
+  --bs-heading-color: #ffffff;
+
+  /* Cores das bordas */
+  --bs-border-color: #495057;
+  --bs-border-color-translucent: rgba(255, 255, 255, 0.15);
+
+  /* Cores de componentes */
+  --bs-list-group-bg: #2b3035;
+  --bs-list-group-color: #dee2e6;
+  --bs-card-bg: #2b3035;
+}
+
+/* Ajustes finos para componentes específicos no modo escuro */
+.dark-mode .accordion-button {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.dark-mode .accordion-button:not(.collapsed) {
+    background-color: #0d6efd; /* Cor primária do Bootstrap */
+    color: white;
+}
+
+.dark-mode .accordion-button:not(.collapsed)::after {
+    filter: brightness(0) invert(1);
+}
+
+.dark-mode .form-control {
+    background-color: #343a40;
+    color: #dee2e6;
+    border-color: #495057;
+}
+
+.dark-mode .form-control:focus {
+    background-color: #343a40;
+    color: #dee2e6;
+    border-color: #86b7fe; /* Cor de foco do Bootstrap */
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.dark-mode .text-muted {
+    color: #adb5bd !important;
+}
+
+/* Estilização customizada para o Navbar */
+.navbar-custom {
+  background-color: var(--bs-body-bg); /* Usa a cor de fundo do tema */
+  border-bottom: 1px solid var(--bs-border-color); /* Usa a cor da borda do tema */
+}
+
+/* Garante que os links da navbar tenham a cor correta */
+.navbar-custom .nav-link {
+    color: var(--bs-body-color);
+}
+
+.navbar-custom .nav-link:hover {
+    color: var(--bs-primary);
+}
+
+
+/* No modo escuro, se o logo for escuro, podemos inverter as cores */
+.dark-mode .logo-image {
+  filter: invert(1) hue-rotate(180deg);}
+
+/* Garante que o header e footer do card usem as cores do tema */
+.card-header, .card-footer {
+  background-color: var(--bs-secondary-bg);
+  border-color: var(--bs-border-color);
+}
+
+/* ================================================= */
+/* ESTILOS PARA ITENS DA LISTA DE CLIENTES           */
+/* ================================================= */
+
+/* --- Tema Claro --- */
+
+/* Cor de fundo para item com nova mensagem no tema claro */
+.list-group-item.has-new-message {
+  background-color: #eef7ff; 
+}
+
+/* Cor da borda do status "online" no tema claro */
+.status-badge-border {
+  border: 2px solid white;
+}
+
+
+/* --- Tema Escuro --- */
+
+/* Cor de fundo para item com nova mensagem no tema escuro */
+.dark-mode .list-group-item.has-new-message {
+  /* Usamos uma cor primária com transparência para um efeito sutil */
+  background-color: rgba(var(--bs-primary-rgb), 0.15); 
+}
+
+/* Cor da borda do status "online" no tema escuro, para contrastar com o fundo */
+.dark-mode .status-badge-border {
+  /* Usamos a cor de fundo principal do tema escuro como borda */
+  border: 2px solid var(--bs-body-bg); 
+}
+
+/* Garante que o texto da mensagem não lida fique destacado no modo escuro */
+.dark-mode .has-new-message .text-primary {
+    color: var(--bs-primary) !important;
+}

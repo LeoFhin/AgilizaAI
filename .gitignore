@@ -1,4 +1,7 @@
-# Logs
+# Created by https://www.toptal.com/developers/gitignore/api/react,node,vscode,windows,macos
+# Edit at https://www.toptal.com/developers/gitignore?templates=react,node,vscode,windows,macos
+
+### Logs ###
 logs
 *.log
 npm-debug.log*
@@ -7,89 +10,51 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+### Dependencies ###
+node_modules/
+jspm_packages/
+
+### Build & Cache ###
 dist
 dist-ssr
-*.local
+build/
+.cache/
+.next/
+.vite/
+out/
+.storybook-out/
 
-# Editor directories and files
+### Testing ###
+coverage/
+
+### Lint & Cache ###
+.eslintcache
+.stylelintcache
+
+### Environment Variables ###
+.env
+.env.local
+.env.*.local
+
+### Editor ###
+# VSCode
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+# Other Editors
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-# Node modules
-node_modules/
-
-# Build output
-dist/
-build/
-
-# Dependency directories
-jspm_packages/
-
-# Optional npm cache directory
-.npm/
-
-# dotenv environment variables file
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Editor directories and files
-.vscode/
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-
-# MacOS system files
+### OS Files ###
+# Mac
 .DS_Store
-
-# Windows system files
+# Windows
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# Misc
-*.log
-
-# Parcel-bundler cache
-.cache/
-
-# Next.js
-.next/
-
-# Vite
-.vite/
-
-# Coverage directory used by testing tools
-coverage/
-
-# Optional eslint cache
-.eslintcache
-
-# Optional stylelint cache
-.stylelintcache
-
-# Storybook build outputs
-out/
-.storybook-out/
-
-# Local development
+# Misc ###
 *.local
-

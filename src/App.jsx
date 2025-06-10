@@ -7,6 +7,7 @@ import CourseDetailPage from './components/CourseDetailPage'
 import ConfiguracoesPage from './pages/ConfiguracoesPage'
 import ClientsPage from './pages/ClientsPage'
 import ClientChatPage from './pages/ClientChatPage'
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function App() {
   return (

@@ -1,28 +1,20 @@
-// Feed.jsx aprimorado
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Form, Button, Image, Badge, InputGroup } from 'react-bootstrap';
+import { Container, Row, Col, Card, Form, Button, Image, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { BsImage, BsPaperclip, BsStarFill } from 'react-icons/bs';
 import Post from '../components/Post';
 
+
 const Feed = () => {
-  // Estado para armazenar os posts
   const [posts, setPosts] = useState([]);
-  // Estado para armazenar o texto do novo post
   const [newPostText, setNewPostText] = useState('');
-  // Estado para profissionais online
   const [onlineProfessionals, setOnlineProfessionals] = useState([]);
-  // Estado para categorias populares
   const [popularCategories, setPopularCategories] = useState([]);
-  // Estado para profissionais recomendados
   const [recommendedProfessionals, setRecommendedProfessionals] = useState([]);
-  // Estado para controlar o carregamento
   const [loading, setLoading] = useState(true);
 
-  // Efeito para carregar dados simulados
   useEffect(() => {
-    // Simula carregamento de dados do backend
     const loadData = () => {
-      // Posts simulados - diferentes do perfil do prestador 1
       const dummyPosts = [
         {
           id: 201,
@@ -114,7 +106,6 @@ const Feed = () => {
         },
       ];
 
-      // Profissionais online simulados
       const dummyOnlineProfessionals = [
         {
           id: 101,
@@ -153,7 +144,6 @@ const Feed = () => {
         },
       ];
 
-      // Categorias populares simuladas
       const dummyPopularCategories = [
         { id: 1, name: 'Limpeza', count: 124 },
         { id: 2, name: 'Construção', count: 98 },
@@ -162,7 +152,6 @@ const Feed = () => {
         { id: 5, name: 'Pintura', count: 65 },
       ];
 
-      // Profissionais recomendados simulados
       const dummyRecommendedProfessionals = [
         {
           id: 201,
@@ -187,7 +176,6 @@ const Feed = () => {
         },
       ];
 
-      // Atualiza os estados com os dados simulados
       setTimeout(() => {
         setPosts(dummyPosts);
         setOnlineProfessionals(dummyOnlineProfessionals);
@@ -200,15 +188,14 @@ const Feed = () => {
     loadData();
   }, []);
 
-  // Função para lidar com a criação de um novo post
   const handleNewPost = (e) => {
     e.preventDefault();
     
     if (newPostText.trim()) {
       const newPost = {
         id: Date.now(),
-        username: 'Seu Nome', // Normalmente viria dos dados do usuário logado
-        userPhoto: 'https://randomuser.me/api/portraits/women/17.jpg', // Foto do usuário logado
+        username: 'Seu Nome',
+        userPhoto: 'https://randomuser.me/api/portraits/women/17.jpg', 
         date: new Date().toLocaleDateString('pt-BR', { 
           day: 'numeric', 
           month: 'long', 
@@ -238,9 +225,7 @@ const Feed = () => {
   return (
     <Container fluid className="py-4">
       <Row>
-        {/* Coluna principal para o feed */}
         <Col lg={7} className="mx-auto">
-          {/* Card para criar novo post */}
           <Card className="mb-4 shadow-sm">
             <Card.Body>
               <div className="d-flex align-items-center mb-3">
@@ -266,10 +251,10 @@ const Feed = () => {
                 <div className="d-flex justify-content-between align-items-center">
                   <div>
                     <Button variant="outline-secondary" size="sm" className="me-2">
-                      <i className="bi bi-image"></i> Foto
+                      <BsImage className="me-1" /> Foto
                     </Button>
                     <Button variant="outline-secondary" size="sm">
-                      <i className="bi bi-paperclip"></i> Anexo
+                      <BsPaperclip className="me-1" /> Anexo
                     </Button>
                   </div>
                   <Button type="submit" variant="primary">
@@ -280,7 +265,6 @@ const Feed = () => {
             </Card.Body>
           </Card>
 
-          {/* Filtros para o Feed */}
           <Card className="mb-4 shadow-sm">
             <Card.Body className="p-3">
               <div className="d-flex justify-content-between align-items-center">
@@ -290,7 +274,7 @@ const Feed = () => {
                   <Button variant="outline-secondary" size="sm">Seguindo</Button>
                 </div>
                 <div>
-                  <Form.Select size="sm" className="border-0 bg-light">
+                  <Form.Select size="sm">
                     <option>Todas categorias</option>
                     <option>Limpeza</option>
                     <option>Construção</option>
@@ -305,17 +289,14 @@ const Feed = () => {
             </Card.Body>
           </Card>
 
-          {/* Posts do feed */}
           {posts.map((post) => (
             <Post key={post.id} post={post} />
           ))}
         </Col>
 
-        {/* Coluna da barra lateral */}
         <Col lg={3} className="d-none d-lg-block">
-          {/* Card de profissionais online */}
           <Card className="mb-4 shadow-sm">
-            <Card.Header className="bg-white">
+            <Card.Header>
               <h5 className="mb-0">Profissionais Online</h5>
             </Card.Header>
             <Card.Body className="p-0">
@@ -336,7 +317,7 @@ const Feed = () => {
                           className="me-3"
                         />
                         <span 
-                          className={`position-absolute bottom-0 end-0 p-1 bg-${professional.status === 'online' ? 'success' : 'warning'} rounded-circle`}
+                          className={`position-absolute bottom-0 end-0 p-1 bg-${professional.status === 'online' ? 'success' : 'warning'} border border-light rounded-circle`}
                           style={{ width: '12px', height: '12px' }}
                         ></span>
                       </div>
@@ -349,24 +330,22 @@ const Feed = () => {
                 ))}
               </div>
             </Card.Body>
-            <Card.Footer className="bg-white text-center">
+            <Card.Footer className="text-center">
               <Link to="/buscar-prestadores" className="text-decoration-none">Ver todos</Link>
             </Card.Footer>
           </Card>
 
-          {/* Card de categorias populares */}
           <Card className="mb-4 shadow-sm">
-            <Card.Header className="bg-white">
+            <Card.Header>
               <h5 className="mb-0">Categorias Populares</h5>
             </Card.Header>
             <Card.Body>
               <div className="d-flex flex-wrap gap-2">
                 {popularCategories.map(category => (
                   <Badge 
-                    bg="light" 
-                    text="dark" 
+                    bg="secondary"
                     key={category.id}
-                    className="px-3 py-2 d-flex align-items-center border"
+                    className="px-3 py-2 d-flex align-items-center"
                   >
                     {category.name}
                     <Badge bg="primary" pill className="ms-2">
@@ -377,10 +356,8 @@ const Feed = () => {
               </div>
             </Card.Body>
           </Card>
-
-          {/* Card de profissionais recomendados */}
           <Card className="shadow-sm">
-            <Card.Header className="bg-white">
+            <Card.Header>
               <h5 className="mb-0">Recomendados para você</h5>
             </Card.Header>
             <Card.Body className="p-0">
@@ -403,8 +380,8 @@ const Feed = () => {
                         <h6 className="mb-0">{professional.name}</h6>
                         <div className="d-flex align-items-center">
                           <small className="text-muted me-2">{professional.specialty}</small>
-                          <small className="text-warning">
-                            <i className="bi bi-star-fill"></i> {professional.rating}
+                          <small className="text-warning d-flex align-items-center">
+                            <BsStarFill className="me-1" /> {professional.rating}
                           </small>
                         </div>
                       </div>
@@ -413,7 +390,7 @@ const Feed = () => {
                 ))}
               </div>
             </Card.Body>
-            <Card.Footer className="bg-white text-center">
+            <Card.Footer className="text-center">
               <Link to="/buscar-prestadores" className="text-decoration-none">Explorar mais</Link>
             </Card.Footer>
           </Card>

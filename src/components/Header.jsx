@@ -1,18 +1,19 @@
-// Header.jsx atualizado
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <Navbar bg="light" expand="lg" className="shadow-sm">
+    <Navbar expand="lg" className="shadow-sm navbar-custom">
       <Container>
-        {/* Logo (pode ser imagem futuramente) */}
         <Navbar.Brand as={Link} to="/feed">
-          {/* Substitua por imagem da logo se quiser */}
-          <strong>Joba</strong>
+          <img 
+            src='/logoAgilizaAI2.jpg' 
+            alt='logo AgilizaAI' 
+            style={{ height: '50px', transform: 'scale(1.4)' }} 
+            className="logo-image" 
+          />
         </Navbar.Brand>
         
-        {/* Botão hambúrguer para mobile */}
         <Navbar.Toggle aria-controls="main-navbar" />
         
         <Navbar.Collapse id="main-navbar">
@@ -30,4 +31,3 @@ const Header = () => {
 };
 
 export default Header;
-

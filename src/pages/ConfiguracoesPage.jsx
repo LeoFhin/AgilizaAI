@@ -1,20 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Container, Row, Col, Card, Form, Button, ListGroup, Accordion } from 'react-bootstrap';
+import { useTheme } from '../context/ThemeContext.jsx'; // Importando o hook do nosso contexto
 
 const ConfiguracoesPage = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
-  }, [isDarkMode]);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  // Usando o estado e a função do nosso contexto global
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
   const handleAjudaClick = () => {
     alert('Você será direcionado para a central de ajuda!');
@@ -34,6 +24,7 @@ const ConfiguracoesPage = () => {
       <Row>
         <Col md={8} className="mx-auto">
           <Accordion defaultActiveKey="0" alwaysOpen>
+            {/* Seção de Perfil com conteúdo restaurado */}
             <Accordion.Item eventKey="0">
               <Accordion.Header>Informações do Perfil</Accordion.Header>
               <Accordion.Body>
@@ -84,28 +75,29 @@ const ConfiguracoesPage = () => {
               </Accordion.Body>
             </Accordion.Item>
 
+            {/* Seção de Notificações com conteúdo restaurado */}
             <Accordion.Item eventKey="1">
               <Accordion.Header>Preferências de Notificação</Accordion.Header>
               <Accordion.Body>
                 <Card>
                   <Card.Body>
                     <ListGroup variant="flush">
-                        <ListGroup.Item className="d-flex justify-content-between align-items-center">
-                            Notificações por Email
-                            <Form.Check type="switch" id="email-notifications" defaultChecked />
-                        </ListGroup.Item>
-                        <ListGroup.Item className="d-flex justify-content-between align-items-center">
-                            Novas mensagens de clientes
-                            <Form.Check type="switch" id="client-messages-notifications" defaultChecked />
-                        </ListGroup.Item>
-                        <ListGroup.Item className="d-flex justify-content-between align-items-center">
-                            Atualizações de cursos
-                            <Form.Check type="switch" id="course-updates-notifications" />
-                        </ListGroup.Item>
-                        <ListGroup.Item className="d-flex justify-content-between align-items-center">
-                            Promoções e novidades
-                            <Form.Check type="switch" id="promotions-notifications" defaultChecked/>
-                        </ListGroup.Item>
+                      <ListGroup.Item className="d-flex justify-content-between align-items-center">
+                        Notificações por Email
+                        <Form.Check type="switch" id="email-notifications" defaultChecked />
+                      </ListGroup.Item>
+                      <ListGroup.Item className="d-flex justify-content-between align-items-center">
+                        Novas mensagens de clientes
+                        <Form.Check type="switch" id="client-messages-notifications" defaultChecked />
+                      </ListGroup.Item>
+                      <ListGroup.Item className="d-flex justify-content-between align-items-center">
+                        Atualizações de cursos
+                        <Form.Check type="switch" id="course-updates-notifications" />
+                      </ListGroup.Item>
+                      <ListGroup.Item className="d-flex justify-content-between align-items-center">
+                        Promoções e novidades
+                        <Form.Check type="switch" id="promotions-notifications" defaultChecked/>
+                      </ListGroup.Item>
                     </ListGroup>
                     <div className="text-end mt-3">
                       <Button variant="primary">Salvar Preferências</Button>
@@ -114,7 +106,8 @@ const ConfiguracoesPage = () => {
                 </Card>
               </Accordion.Body>
             </Accordion.Item>
-
+            
+            {/* Seção de Aparência */}
             <Accordion.Item eventKey="2">
               <Accordion.Header>Aparência</Accordion.Header>
               <Accordion.Body>
@@ -139,28 +132,29 @@ const ConfiguracoesPage = () => {
               </Accordion.Body>
             </Accordion.Item>
 
+            {/* Seção de Conta com conteúdo restaurado */}
             <Accordion.Item eventKey="3">
               <Accordion.Header>Conta</Accordion.Header>
               <Accordion.Body>
                 <Card>
                   <Card.Body>
                     <ListGroup variant="flush">
-                        <ListGroup.Item action>
-                            Alterar Senha
-                        </ListGroup.Item>
-                        <ListGroup.Item action>
-                            Ver Histórico de Atividade
-                        </ListGroup.Item>
-                        <ListGroup.Item action variant="danger" className="text-danger">
-                            Excluir Minha Conta
-                        </ListGroup.Item>
+                      <ListGroup.Item action>
+                        Alterar Senha
+                      </ListGroup.Item>
+                      <ListGroup.Item action>
+                        Ver Histórico de Atividade
+                      </ListGroup.Item>
+                      <ListGroup.Item action variant="danger" className="text-danger">
+                        Excluir Minha Conta
+                      </ListGroup.Item>
                     </ListGroup>
                   </Card.Body>
                 </Card>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-
+          
           <div className="text-center mt-4">
             <Button
               variant="outline-secondary"
@@ -171,7 +165,6 @@ const ConfiguracoesPage = () => {
               Preciso de ajuda
             </Button>
           </div>
-
         </Col>
       </Row>
     </Container>

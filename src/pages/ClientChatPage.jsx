@@ -12,6 +12,7 @@ const ClientChatPage = () => {
   const [newMessage, setNewMessage] = useState('');
   const messagesEndRef = useRef(null);
 
+  // ... (lógica de useEffect e handlers permanece a mesma) ...
   useEffect(() => {
     const currentClient = clientsData.find(c => c.id === clientId);
     if (currentClient) {
@@ -46,6 +47,7 @@ const ClientChatPage = () => {
     setNewMessage('');
   };
 
+
   if (!client) {
     return (
       <Container className="text-center py-5">
@@ -56,10 +58,12 @@ const ClientChatPage = () => {
 
   return (
     <Container fluid="md" className="d-flex flex-column vh-100 py-3">
+      {/* CABEÇALHO DO CHAT */}
       <Row className="mb-3 align-items-center">
         <Col xs="auto" className="pe-0">
           <Button
-            variant="light"
+            // ALTERADO: de 'light' para uma variante mais neutra
+            variant="outline-secondary" 
             onClick={() => navigate('/clientes')}
             className="d-flex align-items-center"
             aria-label="Voltar para lista de clientes"
@@ -70,7 +74,8 @@ const ClientChatPage = () => {
         </Col>
 
         <Col>
-          <Card className="shadow-sm position-relative">
+          {/* Card do topo não precisa de 'bg-white', ele já herda a cor correta */}
+          <Card className="shadow-sm">
             <Card.Body className="p-2">
               <Row className="align-items-center">
                 <Col xs="auto">
@@ -81,19 +86,18 @@ const ClientChatPage = () => {
                     height={40}
                   />
                 </Col>
-
                 <Col className="d-flex flex-column">
                   <h6 className="mb-0">{client.name}</h6>
                   <small className="text-muted">{client.isOnline ? 'Online' : 'Offline'}</small>
                 </Col>
-
                 <Col xs="auto">
                   <Button
-                    variant="light"
+                    // ALTERADO: de 'light' para uma variante neutra
+                    variant="outline-secondary" 
                     className="p-2 rounded-circle shadow-sm"
                     aria-label="Ligar para cliente"
                   >
-                    <BsTelephoneFill size={20} className="text-warning" />
+                    <BsTelephoneFill size={20} className="text-success" />
                   </Button>
                 </Col>
               </Row>
@@ -102,8 +106,10 @@ const ClientChatPage = () => {
         </Col>
       </Row>
 
+      {/* ÁREA DAS MENSAGENS */}
       <div
-        className="flex-grow-1 overflow-auto mb-3 p-3 bg-light rounded shadow-sm"
+        // REMOVIDO: 'bg-light'. Adicionamos uma classe customizada 'chat-area'
+        className="flex-grow-1 overflow-auto mb-3 p-3 rounded shadow-sm chat-area"
         style={{ maxHeight: 'calc(100vh - 200px)' }}
       >
         {(client.messages || []).map(msg => (
@@ -112,6 +118,7 @@ const ClientChatPage = () => {
         <div ref={messagesEndRef} />
       </div>
 
+      {/* INPUT DE NOVA MENSAGEM */}
       <Form onSubmit={handleSendMessage}>
         <InputGroup className="shadow-sm">
           <Form.Control
@@ -122,10 +129,10 @@ const ClientChatPage = () => {
             aria-label="Mensagem"
           />
           <Button
-            variant="light"
+            // ALTERADO: de 'light' para uma variante neutra
+            variant="outline-secondary"
             type="button"
             aria-label="Enviar mensagem de áudio"
-            className="border"
           >
             <BsMicFill size={20} className="text-danger" />
           </Button>

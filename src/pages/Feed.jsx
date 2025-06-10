@@ -22,7 +22,7 @@ const Feed = () => {
           userPhoto: 'https://randomuser.me/api/portraits/men/42.jpg',
           date: '18 de maio de 2025',
           content: 'Acabei de finalizar a pintura desta casa no Jardim Paulista. Três dias de trabalho, mas ficou show! Cliente super satisfeito com o acabamento nas paredes texturizadas. #PintorProfissional 🎨',
-          image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+          image: 'https://seuprofissa.app/wp-content/uploads/2025/02/pintor-1024x559.webp',
           comments: [
             {
               author: 'Marcos Oliveira',
@@ -66,7 +66,7 @@ const Feed = () => {
           userPhoto: 'https://randomuser.me/api/portraits/men/65.jpg',
           date: '14 de maio de 2025',
           content: 'Resolvido mais um problema de infiltração! Cliente estava com vazamento na caixa d\'água há semanas. Troquei os registros e instalei boia nova. Serviço garantido! 🚿🔧',
-          image: 'https://images.unsplash.com/photo-1621905251189-08b45249ff78?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+          image: 'https://www.cronoshare.com.br/blog/wp-content/uploads/2019/01/Quanto-custa-fazer-a-troca-de-caixa-d%C3%A1igua.jpg',
           comments: [
             {
               author: 'Roberto Alves',

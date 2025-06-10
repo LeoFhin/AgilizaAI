@@ -116,3 +116,79 @@ body.dark-mode {
 .dark-mode .has-new-message .text-primary {
     color: var(--bs-primary) !important;
 }
+
+/* ================================== */
+/* ESTILOS PARA BALÃO DE MENSAGEM     */
+/* ================================== */
+
+/* Estilos gerais do balão */
+.message-bubble .card-body {
+  color: var(--bs-body-color);
+}
+
+/* Balão para o usuário logado ('eu') */
+.message-bubble.is-me {
+  background-color: var(--bs-primary);
+  color: white; /* Texto em balões primários é sempre branco */
+}
+
+/* Timestamp dentro do balão 'eu' */
+.message-bubble.is-me .timestamp {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+
+/* Balão para as outras pessoas (remetente) */
+.message-bubble.is-other {
+  background-color: var(--bs-light); /* Fundo branco/cinza claro no tema padrão */
+  color: var(--bs-dark);
+}
+
+/* Timestamp dentro do balão 'other' no tema claro */
+.message-bubble.is-other .timestamp {
+   color: var(--bs-secondary-color) !important;
+}
+
+
+/* ================================== */
+/* AJUSTES PARA O MODO ESCURO         */
+/* ================================== */
+
+.dark-mode .message-bubble.is-other {
+  background-color: var(--bs-secondary-bg);
+  color: var(--bs-body-color);
+}
+
+/* Estilização das abas (Nav.Link) no perfil */
+.nav-tabs {
+  border-bottom-color: var(--bs-border-color);
+}
+
+.nav-tabs .nav-link {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--bs-secondary-color);
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: var(--bs-border-color-translucent);
+  color: var(--bs-body-color);
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--bs-primary);
+  background-color: var(--bs-body-bg);
+  border-color: var(--bs-border-color);
+  border-bottom-color: var(--bs-body-bg); /* Esconde a borda inferior da aba ativa */
+}
+
+/* Borda da imagem de perfil que se adapta ao tema */
+.profile-image-border {
+  /* No tema claro, a borda será 'white' */
+  border-color: white !important;
+}
+
+/* No modo escuro, a borda será a cor de fundo do body */
+.dark-mode .profile-image-border {
+  border-color: var(--bs-body-bg) !important;
+}
